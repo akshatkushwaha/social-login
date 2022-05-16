@@ -4,14 +4,39 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <title>React App</title>
+    <title>Social Login</title>
     <!-- Google Button API -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
 
-    
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      function handleCredentialResponse(response) {
+        // decodeJwtResponse() is a custom function defined by you
+        // to decode the credential response.
+        if(response == null){
+          alert("Can't Login")
+        } else {
+          // const responsePayload = decodeJwtResponse(response.credential);
+          window.location.href = `https://localhost:3000/dashboard?JWT=${response.credential}`;
+        }
+      }
+      window.onload = function () {
+        google.accounts.id.initialize({
+          client_id: "605425009699-a08v212752nbljkldsado1odec6d8nfk.apps.googleusercontent.com",
+          callback: handleCredentialResponse
+        });
+        google.accounts.id.renderButton(
+          document.getElementById("buttonDiv"),
+          {
+            type:"icon", 
+            theme: "outline", 
+            size: "large",
+          }  // customization attributes
+        );
+        // google.accounts.id.prompt(); // also display the One Tap dialog
+      }
+  </script>
   </body>
 </html>

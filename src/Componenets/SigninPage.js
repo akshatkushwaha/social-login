@@ -1,6 +1,6 @@
 import React from "react";
 import FacebookButton from "./FacebookButton";
-import GoogleButton from "./GoogleButton";
+import GSIbutton from "./GSIbutton";
 import TwitterButton from "./TwitterButton";
 
 export default function SigninPage() {
@@ -17,8 +17,8 @@ export default function SigninPage() {
                       Sign in with
                     </h6>
                   </div>
-                  <div className="btn-wrapper text-center">
-                    <GoogleButton />
+                  <div className="btn-wrapper text-center flex justify-center">
+                    <GSIbutton />
                     <FacebookButton />
                     <TwitterButton />
                   </div>
