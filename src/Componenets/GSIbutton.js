@@ -40,7 +40,7 @@ function GSIbutton(props) {
   function renderGoogleButton() {
     google.accounts.id.initialize({
       client_id:
-        "605425009699-a08v212752nbljkldsado1odec6d8nfk.apps.googleusercontent.com",
+        "605425009699-gmn5itshhf4alqphbn1c9vc40slqfsqs.apps.googleusercontent.com",
       callback: handleCredentialResponse,
     });
     google.accounts.id.renderButton(
