@@ -39,7 +39,11 @@ export default function SigninPage() {
   }
 
   function handleLogout() {
-    setLoginStatus(false);
+    jsCookie.remove("googleid");
+    jsCookie.remove("name");
+    jsCookie.remove("email");
+    jsCookie.remove("picture");
+    window.location.href = "/";
   }
 
   if (loggedin === false) {

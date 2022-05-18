@@ -1,8 +1,6 @@
 import React from "react";
-import jsCookie from "js-cookie";
 
 function GSIbutton(props) {
-  const google = window.google;
   function decodeJwtResponse(token) {
     var base64Url = token.split(".")[1];
     var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
@@ -30,14 +28,11 @@ function GSIbutton(props) {
   }
 
   function handleSignout() {
-    jsCookie.remove("googleid");
-    jsCookie.remove("name");
-    jsCookie.remove("email");
-    jsCookie.remove("picture");
     props.handleLogout();
   }
 
   function renderGoogleButton() {
+    const google = window.google;
     google.accounts.id.initialize({
       client_id:
         "605425009699-gmn5itshhf4alqphbn1c9vc40slqfsqs.apps.googleusercontent.com",
@@ -51,12 +46,14 @@ function GSIbutton(props) {
         size: "large",
       } // customization attributes
     );
-
     google.accounts.id.prompt(); // also display the One Tap dialog
   }
 
-  if (props.loggedin === false) {
+  window.onload = function () {
     renderGoogleButton();
+  };
+
+  if (props.loggedin === false) {
     return <div id="buttonDiv" className="pr-2"></div>;
   } else {
     return (
